@@ -83,7 +83,7 @@ const PokemonPage = () => {
               <h6 className="mt-4 titulo">Tipo y Tipos de cualidades de un pokemon</h6>
               <div className="row row-cols-2 row-cols-md-2 mt-3">
                 {pokemonId.types.map((tipo) => 
-                (
+                ( 
                   <div>
                     <div className="card bg-success border-0 titulo">
                       <div>

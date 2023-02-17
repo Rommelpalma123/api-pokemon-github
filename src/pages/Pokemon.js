@@ -11,7 +11,7 @@ const Pokemon = () =>
   const [error, setError] = useState(null);
   const [filteredPokemons, setFilteredPokemons] = useState([]);
   const [offset, setOffset] = useState(0);
-  const [limit, setLimit] = useState(100);
+  const [limit, setLimit] = useState(20);
 
   useEffect(() => 
   {
@@ -74,24 +74,23 @@ const Pokemon = () =>
                 <div className="mt-3 mb-3">
                   <div>
                     <div
-                      className="card border-success"
+                      className="card border-success text-bg-dark carta-inicio"
                       style={{ cursor: "pointer" }}
                     >
                       <p className="m-2">N-{pokemon.id}</p>
-                      <div className="text-center">
+                      <div className="contenedor text-center">
                         <img
                           src={pokemon.image}
-                          className="rounded-circle bg-info"
-                          width="70px"
-                          height="70px"
+                          className="imagen-inicio"
                           alt={pokemon.name}
                         />
                       </div>
                       <div className="card-body">
-                        <h5 className="card-title m-2">{pokemon.name}</h5>
+                        <div class="texto">Tocame para verme mejor</div>
+                        <h5 className="card-title m-2 pokemon-name">{pokemon.name}</h5>
                       </div>
                     </div>
-                  </div>
+                  </div>  
                 </div>
               </Link>
             ))

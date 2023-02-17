@@ -6,8 +6,7 @@
 
 .img-pokemon:hover
 {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
-    transform: rotate(25deg); 
+  transform:scale(1.2);
 }
 
 .titulo:hover
@@ -21,4 +20,57 @@
     align-items: center;
     justify-content: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+    background-color: rgb(55, 180, 41);
+    border-radius: 5%;
 }
+
+.imagen-inicio
+{
+  width: 150px;
+  height: 150px;
+  filter: blur(2px);
+}
+
+.imagen-inicio:hover
+{
+  width: 150px;
+  height: 150px;
+  filter: blur(0px);
+  transform:scale(1.6);
+}
+
+.carta-inicio:hover
+{
+  box-shadow: 0 2px 6px rgba(188, 28, 28, 0.5); 
+}
+
+.pokemon-name
+{
+  background-color: rgb(134, 179, 37);
+  text-align: center;
+  border-radius: 4%;
+  color:  #fff;
+}
+
+.texto
+{
+  position: absolute;
+  top: 50%;
+  text-align: center;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 8px;
+  color: rgb(233, 228, 185);
+}
+
+.texto:hover
+{
+  opacity: 0;
+}
+
+
+.contenedor
+{
+  position: relative;
+}
+
