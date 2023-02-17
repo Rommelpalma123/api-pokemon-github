@@ -11,7 +11,7 @@ function App()
     <div>
       <Barra />
       <Routes>
-        <Route exact path="/pokemon" element={ <Pokemon /> } />
+        <Route exact path="/api-pokemon-github" element={ <Pokemon /> } />
         <Route path="/github" element={ <Github /> } />
         <Route path="/pokemon/:id" element={ <PokemonPage /> } />
       </Routes>
