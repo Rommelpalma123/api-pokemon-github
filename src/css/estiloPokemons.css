@@ -1,0 +1,24 @@
+.img-pokemon
+{
+    height:350px;
+    width: 350px
+}
+
+.img-pokemon:hover
+{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+    transform: rotate(25deg); 
+}
+
+.titulo:hover
+{
+    color: white;
+}
+
+.valores:hover
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+}
