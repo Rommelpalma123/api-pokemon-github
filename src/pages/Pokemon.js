@@ -4,28 +4,23 @@ import Buscar from "../components/Buscar";
 import { Link } from "react-router-dom";
 import Cargando from "../components/Cargando";
 
-const Pokemon = () => 
-{
+const Pokemon = () => {
   const [pokemons, setPokemons] = useState([]);
   const [cargando, setCargando] = useState(false);
   const [error, setError] = useState(null);
   const [filteredPokemons, setFilteredPokemons] = useState([]);
   const [offset, setOffset] = useState(0);
-  const [limit, setLimit] = useState(20);
+  const [limit/*, setLimi0t*/] = useState(20);
 
-  useEffect(() => 
-  {
-    async function getPokemons() 
-    {
+  useEffect(() => {
+    async function getPokemons() {
       setCargando(true);
-      try 
-      {
+      try {
         const pokems = await GetPokemonApi(limit, offset);
         setPokemons(pokems);
         setFilteredPokemons(pokems);
         setCargando(false);
-      } catch (error) 
-      {
+      } catch (error) {
         setError(error.message);
         setCargando(false);
       }
@@ -33,8 +28,7 @@ const Pokemon = () =>
     getPokemons();
   }, [limit, offset]);
 
-  const handleSearch = (searchTerm) => 
-  {
+  const handleSearch = (searchTerm) => {
     setFilteredPokemons(
       pokemons.filter((pokemon) =>
         pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -42,13 +36,11 @@ const Pokemon = () =>
     );
   };
 
-  const handleLoadMore = () => 
-  {
+  const handleLoadMore = () => {
     setOffset((prevOffset) => prevOffset + limit);
   };
 
-  const handleLoadPrevious = () => 
-  {
+  const handleLoadPrevious = () => {
     if (offset === 0) return;
     setOffset((prevOffset) => prevOffset - limit);
   };
@@ -86,11 +78,13 @@ const Pokemon = () =>
                         />
                       </div>
                       <div className="card-body">
-                        <div class="texto">Tocame para verme mejor</div>
-                        <h5 className="card-title m-2 pokemon-name">{pokemon.name}</h5>
+                        <div className="texto">Tocame para verme mejor</div>
+                        <h5 className="card-title m-2 pokemon-name">
+                          {pokemon.name}
+                        </h5>
                       </div>
                     </div>
-                  </div>  
+                  </div>
                 </div>
               </Link>
             ))
@@ -98,13 +92,19 @@ const Pokemon = () =>
         </div>
         <div className="row row-cols-1 row-cols-md-2">
           <div>
-            <button className="btn btn-primary mt-2 mb-2 col-12" onClick={handleLoadPrevious}>
-              Previous
+            <button
+              className="btn btn-primary mt-2 mb-2 col-12"
+              onClick={handleLoadPrevious}
+            >
+              Back
             </button>
           </div>
           <div>
-            <button className="btn btn-primary mt-2 mb-2 col-12" onClick={handleLoadMore}>
-              Load More
+            <button
+              className="btn btn-primary mt-2 mb-2 col-12"
+              onClick={handleLoadMore}
+            >
+              More
             </button>
           </div>
         </div>

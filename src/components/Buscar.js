@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 
 const Buscar = ({ onSearch }) => {
-  const [ searchTerm, setSearchTerm ] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     onSearch(searchTerm);
   };
+
   return (
     <div>
       <div className="container mt-4">

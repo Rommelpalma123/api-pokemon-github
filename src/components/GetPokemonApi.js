@@ -1,22 +1,11 @@
-export const GetPokemonApi = async (limit , offset) => 
-{
+export const GetPokemonApi = async (limit, offset) => {
   const respuesta = await fetch(
-    `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`,
-    {
-      method: "GET",
-      headers: 
-      {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    }
-  );
+    `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
 
   const data = await respuesta.json();
 
   const allPokemons = await Promise.all(
-    data.results.map(async (pokemon) => 
-    {
+    data.results.map(async (pokemon) => {
       const pokemonRespuesta = await fetch(pokemon.url);
       const pokemonData = await pokemonRespuesta.json();
 
@@ -31,17 +20,22 @@ export const GetPokemonApi = async (limit , offset) =>
   return allPokemons;
 };
 
-export const getPokemonById = async (id) => 
-{
-  const respuesta = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, 
-  {
-    method: "GET",
-    headers: 
-    {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-  });
+export const getPokemonById = async (id) => {
+  const respuesta = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
   const data = await respuesta.json();
   return data;
+};
+
+
+export const getEvolutionChain = async (id) => {
+  try {
+    const respuesta = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
+    const species = await respuesta.json();
+    const chainRespuesta = await fetch(species.evolution_chain.url);
+    const chain = await chainRespuesta.json();
+    return chain;
+
+  } catch (error) {
+    console.error(error);
+  }
 };

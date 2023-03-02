@@ -1,8 +1,7 @@
 import React from "react";
 import { DotWave } from "@uiball/loaders";
 
-const Cargando = () => 
-{
+const Cargando = () => {
   return (
     <div>
       <div

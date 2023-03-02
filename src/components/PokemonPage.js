@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getPokemonById } from "./GetPokemonApi";
 import Cargando from "./Cargando";
-import '../css/estiloPokemons.css'
+import "../css/estiloPokemons.css";
 
 const PokemonPage = () => {
-  const [ pokemonId, setPokemonId ] = useState({});
-  const [ cargando, setCargando ] = useState(true);
-  const [ error, setError ] = useState(null);
+  const [pokemonId, setPokemonId] = useState({});
+  //const [evolutionChain, setEvolutionChain] = useState([]);
+  const [cargando, setCargando] = useState(true);
+  const [error, setError] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
@@ -30,7 +31,9 @@ const PokemonPage = () => {
   }
 
   if (error) {
-    return <p>Algo salio mal al traer la informacion del pokemon: {error}</p>;
+    return (
+      <p>Algo salio mal al traer la informacion del pokemon: {error.message}</p>
+    );
   }
 
   return (
@@ -46,10 +49,10 @@ const PokemonPage = () => {
               className="m-2 img-pokemon"
               alt={pokemonId.name}
             />
-            <h5 className="mt-2 m-2">
+            <div className="mt-2 m-2">
               <span className="m-2">height: {pokemonId.height}</span>
               <span className="m-2">weight: {pokemonId.weight}Kg</span>
-            </h5>
+            </div>
           </div>
           <div className="col-md-8">
             <div className="card-body">
@@ -57,38 +60,37 @@ const PokemonPage = () => {
               <div className="row row-cols-2 row-cols-md-3 mt-2">
                 <div>
                   <h4 className="mt-4 titulo">Hp</h4>
-                  <span className="valores">{pokemonId.stats[0].base_stat}</span>
+                  <div className="valores">{pokemonId.stats[0].base_stat}</div>
                 </div>
                 <div>
                   <h4 className="mt-4 titulo">Attack</h4>
-                  <span className="valores">{pokemonId.stats[1].base_stat}</span>
+                  <div className="valores">{pokemonId.stats[1].base_stat}</div>
                 </div>
                 <div>
                   <h4 className="mt-4 titulo">Defense</h4>
-                  <span className="valores">{pokemonId.stats[2].base_stat}</span>
+                  <div className="valores">{pokemonId.stats[2].base_stat}</div>
                 </div>
                 <div>
                   <h4 className="mt-4 titulo">Special Attack</h4>
-                  <span className="valores">{pokemonId.stats[3].base_stat}</span>
+                  <div className="valores">{pokemonId.stats[3].base_stat}</div>
                 </div>
                 <div>
                   <h4 className="mt-4 titulo">Special Defense</h4>
-                  <span className="valores">{pokemonId.stats[4].base_stat}</span>
+                  <div className="valores">{pokemonId.stats[4].base_stat}</div>
                 </div>
                 <div>
                   <h4 className="mt-4 titulo">Speed</h4>
-                  <span className="valores">{pokemonId.stats[5].base_stat}</span>
+                  <div className="valores">{pokemonId.stats[5].base_stat}</div>
                 </div>
               </div>
-              <h6 className="mt-4 titulo">Tipo y Tipos de cualidades de un pokemon</h6>
+              <h6 className="mt-4 titulo">
+                Tipo y Tipos de cualidades de un pokemon
+              </h6>
               <div className="row row-cols-2 row-cols-md-2 mt-3">
-                {pokemonId.types.map((tipo) => 
-                ( 
-                  <div>
-                    <div className="card bg-success border-0 titulo">
-                      <div>
-                        <h2 key={tipo.slot}>{tipo.type.name}</h2>
-                      </div>
+                {pokemonId.types.map((tipo) => (
+                  <div key={tipo.type.name} className="titulo">
+                    <div>
+                      <h2 key={tipo.slot}>{tipo.type.name}</h2>
                     </div>
                   </div>
                 ))}
@@ -96,6 +98,17 @@ const PokemonPage = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <Link
+          style={{ textDecoration: "none", color: "black" }}
+          className=""
+          to={`/evolutions/${pokemonId.id}`}
+        >
+          <button type="button" className="btn btn-primary">
+            Show Evolutions
+          </button>
+        </Link>
       </div>
     </div>
   );

@@ -6,7 +6,9 @@ function Github() {
 
   const getUser = async () => {
     try {
-      const respuesta = await fetch(`https://api.github.com/users/${search}`.toLowerCase());
+      const respuesta = await fetch(
+        `https://api.github.com/users/${search}`.toLowerCase()
+      );
       const data = await respuesta.json();
       findUser(data);
     } catch (err) {
@@ -20,7 +22,7 @@ function Github() {
           <div className="col-md-6 mt-2">
             <input
               className="form-control"
-              onChange={((e) => setSearch(e.target.value))}
+              onChange={(e) => setSearch(e.target.value)}
               placeholder="Ingresa el nombre de un usuario"
             />
           </div>
@@ -45,9 +47,7 @@ function Github() {
                   />
                   <div className="card-body">
                     <h5 className="card-title">{user.login}</h5>
-                    <p className="card-text">
-                      {user.bio}
-                    </p>
+                    <p className="card-text">{user.bio}</p>
                   </div>
                 </div>
               </div>
